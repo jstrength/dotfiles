@@ -70,10 +70,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
+plugins=(
 zsh-autosuggestions
 zsh-syntax-highlighting
 you-should-use
+zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -120,11 +121,6 @@ alias grep=rg
 alias find=fd
 alias sed=sd
 
-set -o vi
-
-source ~/.git-prompt.sh
-PS1='$(__git_ps1 "(%s) ")'$PS1
-
 # ==================================
 # My custom config end
 # ==================================
@@ -138,3 +134,5 @@ export NVM_DIR="$HOME/.config/nvm"
 source <(ng completion script)
 . "$HOME/.cargo/env"
 
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
