@@ -74,7 +74,7 @@ plugins=(
 zsh-autosuggestions
 zsh-syntax-highlighting
 you-should-use
-zsh-vi-mode
+# zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

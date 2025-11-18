@@ -1,20 +1,27 @@
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.encoding = 'utf8'
 
-vim.opt.expandtab = true
 vim.opt.autoindent = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
+
+vim.diagnostic.config({
+    --virtual_text = true,
+    --virtual_text = { current_line = true },
+    virtual_lines = { current_line = true },
+    --virtual_lines = true,
+})
 
 vim.api.nvim_create_user_command('Config',
-function() 
-    vim.cmd.Ex(vim.fn.stdpath('config'))
-end,
-{})
+    function()
+        vim.cmd.Ex(vim.fn.stdpath('config'))
+    end,
+    {})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.highlight.on_yank({ timeout = 1000 }) end,
