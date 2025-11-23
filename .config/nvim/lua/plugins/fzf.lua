@@ -7,5 +7,13 @@ return {
     opts = {
         files = {
         }
+    },
+    keys = {
+        { '<leader>ff', '<cmd>FzfLua global<cr>',     desc = "Files, Buffers, etc." },
+        { '<leader>fr', '<cmd>FzfLua oldfiles<cr>',   desc = "Recent Files" },
+        { '<leader>fs', '<cmd>FzfLua live_grep<cr>',  desc = "Live Grep" },
+        { '<leader>fc', '<cmd>FzfLua commands<cr>',   desc = "Neovim Commands" },
+        { '<leader>fk', '<cmd>FzfLua keymaps<cr>',    desc = "Neovim Commands" },
+        { '<leader>fi', '<cmd>FzfLua builtin<cr>',    desc = "All Builtins" }
     }
 }
