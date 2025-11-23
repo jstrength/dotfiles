@@ -10,6 +10,10 @@ vim.opt.smartindent = true
 vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
 
+vim.opt.undofile = true
+
+vim.cmd("colorscheme habamax")
+
 vim.diagnostic.config({
     --virtual_text = true,
     --virtual_text = { current_line = true },
