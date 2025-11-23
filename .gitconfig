@@ -18,3 +18,5 @@
 	undo  	= reset --soft HEAD~1
 [core]
 	autocrlf = input
+[pull]
+	rebase = true
