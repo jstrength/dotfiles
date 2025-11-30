@@ -45,3 +45,4 @@ export COLORTERM="truecolor"
 . "$HOME/.cargo/env"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
+export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config

@@ -26,6 +26,11 @@ vim.api.nvim_create_user_command('Config',
         vim.cmd.Ex(vim.fn.stdpath('config'))
     end,
     {})
+vim.api.nvim_create_user_command('CD',
+    function()
+        vim.cmd('cd ' .. vim.fn.expand('%:p:h'))
+    end,
+    {})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function() vim.highlight.on_yank({ timeout = 1000 }) end,

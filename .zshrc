@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias python=python3
 alias emacs='emacs -nw'
+alias vim=nvim
 
 #new rust based tools
 alias cat=bat

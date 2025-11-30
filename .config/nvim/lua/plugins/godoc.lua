@@ -23,5 +23,5 @@ return {
         picker = {
             type = "fzf_lua",
         }
-    }
+    },
 }
