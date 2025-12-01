@@ -13,7 +13,7 @@ return {
         vim.keymap.set("n", "<space>eg", dap.run_to_cursor, { desc = "run_to_cursor" })
 
         vim.keymap.set("n", "<space>e?", function()
-            require("dapui").eval(nil, { enter = true })
+            ui.eval(nil, { enter = true })
         end, {desc = "eval var under cursor"})
 
         vim.keymap.set("n", "<F5>", dap.continue)
