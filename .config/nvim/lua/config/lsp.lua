@@ -1,69 +1,71 @@
 -- Disable the default keybinds {{{
 for _, bind in ipairs({ "grn", "gra", "gri", "grr", "grt" }) do
-    pcall(vim.keymap.del, "n", bind)
+	pcall(vim.keymap.del, "n", bind)
 end
 -- }}}
 
-vim.lsp.config('*', {
-    root_markers = { '.git' },
+vim.lsp.config("*", {
+	root_markers = { ".git" },
 })
 
-vim.lsp.enable('lua_ls')
-vim.lsp.config('gopls', {
-    settings = {
-        gopls = {
-            -- https://go.dev/gopls/editor/vim
-            hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                ignoredError = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-            },
-        }
-    }
+vim.lsp.config("gopls", {
+	settings = {
+		gopls = {
+			-- https://go.dev/gopls/editor/vim
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				ignoredError = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+		},
+	},
 })
-vim.lsp.enable('gopls')
---vim.lsp.enable('jsonls')
-vim.lsp.enable('ts_ls')
-vim.lsp.enable('html')
-vim.lsp.config('asm', {
-    cmd = { 'asm-lsp' },
-    -- Filetypes to automatically attach to.
-    filetypes = { 'asm' },
+vim.lsp.config("ts_ls", {
+	filetypes = { "vue" },
 })
-vim.lsp.enable('asm')
+vim.lsp.config("vtsls", {
+	filetypes = { "vue" },
+})
+
+vim.lsp.config("asm", {
+	cmd = { "asm-lsp" },
+	-- Filetypes to automatically attach to.
+	filetypes = { "asm" },
+})
+vim.lsp.enable("asm")
 
 -- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
 vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(ev)
-        local bufnr = ev.buf
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if not client then
-            return
-        end
-        ---@diagnostic disable-next-line need-check-nil
-        if client.server_capabilities.completionProvider then
-            vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-            -- vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
-        end
-        ---@diagnostic disable-next-line need-check-nil
-        if client.server_capabilities.definitionProvider then
-            vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
-        end
+	callback = function(ev)
+		local bufnr = ev.buf
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if not client then
+			return
+		end
+		---@diagnostic disable-next-line need-check-nil
+		if client.server_capabilities.completionProvider then
+			vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+			-- vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
+		end
+		---@diagnostic disable-next-line need-check-nil
+		if client.server_capabilities.definitionProvider then
+			vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+		end
 
-        -- -- nightly has inbuilt completions, this can replace all completion plugins
-        -- if client:supports_method("textDocument/completion", bufnr) then
-        --   -- Enable auto-completion
-        --   vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
-        -- end
+		-- -- nightly has inbuilt completions, this can replace all completion plugins
+		-- if client:supports_method("textDocument/completion", bufnr) then
+		--   -- Enable auto-completion
+		--   vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+		-- end
 
-        --- Disable semantic tokens
-        ---@diagnostic disable-next-line need-check-nil
-        client.server_capabilities.semanticTokensProvider = nil
+		--- Disable semantic tokens
+		---@diagnostic disable-next-line need-check-nil
+		client.server_capabilities.semanticTokensProvider = nil
 
         -- All the keymaps
         -- stylua: ignore start
@@ -101,8 +103,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         keymap("n", "<Leader>dv", function()
             vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
         end, opt("Toggle diagnostic virtual_lines"))
-        -- stylua: ignore end
-    end,
+		-- stylua: ignore end
+	end,
 })
 -- }}}
 --
