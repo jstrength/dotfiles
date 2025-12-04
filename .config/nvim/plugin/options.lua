@@ -17,22 +17,15 @@ vim.opt.undofile = true
 vim.cmd("colorscheme habamax")
 
 vim.diagnostic.config({
-	--virtual_text = true,
-	--virtual_text = { current_line = true },
-	virtual_lines = { current_line = true },
-	--virtual_lines = true,
+    --virtual_text = true,
+    --virtual_text = { current_line = true },
+    virtual_lines = { current_line = true },
+    --virtual_lines = true,
 })
 
-vim.api.nvim_create_user_command("Config", function()
-	vim.cmd.Ex(vim.fn.stdpath("config"))
-end, {})
-vim.api.nvim_create_user_command("CD", function()
-	vim.cmd("cd " .. vim.fn.expand("%:p:h"))
-end, {})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank({ timeout = 1000 })
-	end,
-	desc = "Briefly highlight yanked text",
+    callback = function()
+        vim.highlight.on_yank({ timeout = 1000 })
+    end,
+    desc = "Briefly highlight yanked text",
 })

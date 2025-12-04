@@ -12,6 +12,7 @@ return {
                 end
             },
             { "<leader>f", group = "fuzzy finder" },
+            { "<leader>g", group = "git" },
             { "<leader>t", group = "terminals" },
             { "<leader>x", group = "debug" },
         }
@@ -22,6 +23,7 @@ return {
             function()
                 require("which-key").show({ global = false })
             end,
+
             desc = "Buffer Local Keymaps (which-key)",
         },
 
