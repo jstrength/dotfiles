@@ -4,7 +4,6 @@ return {
         ensure_installed = {
             "lua_ls",
             "gopls",
-            -- "ts_ls",
             "vtsls",
             "vue_ls",
             "html",

@@ -25,19 +25,16 @@ vim.lsp.config("gopls", {
         },
     },
 })
--- vim.lsp.config("ts_ls", {
--- 	filetypes = { "vue" },
--- })
 
-local vue_language_server_path = vim.fn.stdpath('data') ..
-    "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_language_server_path = vim.fn.stdpath("data")
+    .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 local vue_plugin = {
-    name = '@vue/typescript-plugin',
+    name = "@vue/typescript-plugin",
     location = vue_language_server_path,
-    languages = { 'vue' },
-    configNamespace = 'typescript',
+    languages = { "vue" },
+    configNamespace = "typescript",
 }
-vim.lsp.config('vtsls', {
+vim.lsp.config("vtsls", {
     settings = {
         vtsls = {
             tsserver = {
@@ -47,7 +44,7 @@ vim.lsp.config('vtsls', {
             },
         },
     },
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 })
 
 vim.lsp.config("asm", {
