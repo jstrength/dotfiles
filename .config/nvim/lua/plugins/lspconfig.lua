@@ -8,6 +8,7 @@ return {
             "vue_ls",
             "html",
             "jsonls",
+            "stylua",
         },
     },
     dependencies = {

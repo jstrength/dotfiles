@@ -4,6 +4,7 @@ vim.opt.cursorline = true
 vim.opt.encoding = "utf8"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.colorcolumn = "120"
 
 vim.opt.autoindent = true
 vim.opt.expandtab = true
