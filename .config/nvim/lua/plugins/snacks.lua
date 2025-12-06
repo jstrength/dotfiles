@@ -9,22 +9,48 @@ return {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
             -- bigfile = { enabled = true },
+            bufdelete = { enabled = true },
+            debug = { enabled = true },
             -- dashboard = { enabled = true },
             -- explorer = { enabled = true },
             indent = { enabled = true },
-            -- input = { enabled = true },
+            input = { enabled = true },
+            image = { enabled = true },
             -- picker = { enabled = true },
-            -- notifier = { enabled = true },
+            notifier = { enabled = true, timeout = 7000 },
             -- quickfile = { enabled = true },
             -- scope = { enabled = true },
             scroll = { enabled = true },
-            -- statuscolumn = { enabled = true },
+            statuscolumn = { enabled = true },
             -- words = { enabled = true },
+        },
+        keys = {
+            {
+                "<leader>ba",
+                function()
+                    Snacks.bufdelete.all()
+                end,
+                desc = "Delete All Buffers",
+            },
+            {
+                "<leader>bd",
+                function()
+                    Snacks.bufdelete()
+                end,
+                desc = "Delete Current Buffer",
+            },
+            {
+                "<leader>bo",
+                function()
+                    Snacks.bufdelete.other()
+                end,
+                desc = "Delete Other Buffers",
+            },
         },
     },
     {
-        'nvim-mini/mini.surround',
-        version = '*',
+        "nvim-mini/mini.surround",
+        version = "*",
 
         opts = {
             -- Add custom surroundings to be used on top of builtin ones. For more
@@ -36,15 +62,15 @@ return {
 
             -- Module mappings. Use `''` (empty string) to disable one.
             mappings = {
-                add = 'sa',    -- Add surrounding in Normal and Visual modes
-                delete = 'sd', -- Delete surrounding
-                find = 'sf',   -- Find surrounding (to the right)
-                find_left = 'sF', -- Find surrounding (to the left)
-                highlight = 'sh', -- Highlight surrounding
-                replace = 'sr', -- Replace surrounding
+                add = "sa", -- Add surrounding in Normal and Visual modes
+                delete = "sd", -- Delete surrounding
+                find = "sf", -- Find surrounding (to the right)
+                find_left = "sF", -- Find surrounding (to the left)
+                highlight = "sh", -- Highlight surrounding
+                replace = "sr", -- Replace surrounding
 
-                suffix_last = 'l', -- Suffix to search with "prev" method
-                suffix_next = 'n', -- Suffix to search with "next" method
+                suffix_last = "l", -- Suffix to search with "prev" method
+                suffix_next = "n", -- Suffix to search with "next" method
             },
 
             -- Number of lines within which surrounding is searched
@@ -59,12 +85,12 @@ return {
             -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
             -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
             -- see `:h MiniSurround.config`.
-            search_method = 'cover',
+            search_method = "cover",
 
             -- Whether to disable showing non-error feedback
             -- This also affects (purely informational) helper messages shown after
             -- idle time if user input is required.
             silent = false,
-        }
-    }
+        },
+    },
 }
