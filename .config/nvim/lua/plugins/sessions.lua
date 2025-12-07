@@ -1,5 +1,6 @@
 return {
     "jstrength/sessions.nvim",
+    dev = false,
     opts = {},
     lazy = false,
     keys = {
