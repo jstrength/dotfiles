@@ -26,6 +26,13 @@ return {
         },
         keys = {
             {
+                "<leader>ns",
+                function()
+                    Snacks.notifier.show_history()
+                end,
+                desc = "Show notifications",
+            },
+            {
                 "<leader>ba",
                 function()
                     Snacks.bufdelete.all()

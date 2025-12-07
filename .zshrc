@@ -137,3 +137,6 @@ source <(ng completion script)
 
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# opencode
+export PATH=/home/jake/.opencode/bin:$PATH
