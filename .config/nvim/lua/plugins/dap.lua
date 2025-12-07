@@ -1,20 +1,20 @@
 return {
     "mfussenegger/nvim-dap",
     dependencies = {
-        {"leoluz/nvim-dap-go", opts = {}},
-        {"rcarriga/nvim-dap-ui", opts = {}, dependencies = "nvim-neotest/nvim-nio" },
+        { "leoluz/nvim-dap-go", opts = {} },
+        { "rcarriga/nvim-dap-ui", opts = {}, dependencies = "nvim-neotest/nvim-nio" },
         "williamboman/mason.nvim",
     },
     config = function()
         local dap = require("dap")
         local ui = require("dapui")
 
-        vim.keymap.set("n", "<space>eb", dap.toggle_breakpoint, { desc = "toggle_breakpoint" })
-        vim.keymap.set("n", "<space>eg", dap.run_to_cursor, { desc = "run_to_cursor" })
+        vim.keymap.set("n", "<space>xb", dap.toggle_breakpoint, { desc = "toggle_breakpoint" })
+        vim.keymap.set("n", "<space>xg", dap.run_to_cursor, { desc = "run_to_cursor" })
 
-        vim.keymap.set("n", "<space>e?", function()
+        vim.keymap.set("n", "<space>x?", function()
             ui.eval(nil, { enter = true })
-        end, {desc = "eval var under cursor"})
+        end, { desc = "eval var under cursor" })
 
         vim.keymap.set("n", "<F5>", dap.continue)
         vim.keymap.set("n", "<F6>", dap.step_out)

@@ -9,13 +9,16 @@ return {
                 group = "buffers",
                 expand = function()
                     return require("which-key.extras").expand.buf()
-                end
+                end,
             },
+            { "<leader>d", group = "diagnostics" },
             { "<leader>f", group = "fuzzy finder" },
             { "<leader>g", group = "git" },
+            { "<leader>l", group = "lsp" },
+            { "<leader>n", group = "notifications" },
             { "<leader>t", group = "terminals" },
             { "<leader>x", group = "debug" },
-        }
+        },
     },
     keys = {
         {
@@ -26,6 +29,5 @@ return {
 
             desc = "Buffer Local Keymaps (which-key)",
         },
-
     },
 }
