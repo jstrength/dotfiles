@@ -18,5 +18,5 @@ vim.keymap.set("n", "<leader>cd", function()
     vim.cmd("cd " .. vim.fn.expand("%:p:h"))
 end, { desc = "Change working dir to current buffers" })
 
-vim.keymap.set("n", "Q", "q")
-vim.keymap.set("n", "q", "<nop>")
+-- vim.keymap.set("n", "Q", "q")
+-- vim.keymap.set("n", "q", "<nop>")
