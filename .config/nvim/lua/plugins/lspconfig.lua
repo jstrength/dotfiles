@@ -1,4 +1,3 @@
-local plugins_path = vim.fn.stdpath("data")
 return {
     {
         "mason-org/mason-lspconfig.nvim",
@@ -34,26 +33,32 @@ return {
             { "j-hui/fidget.nvim", opts = {} },
         },
     },
+    {
+        "rafamadriz/friendly-snippets",
+    },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        dependencies = { { "Bilal2453/luvit-meta", lazy = true } },
+        config = function()
+            local plugins_path = vim.fn.stdpath("data") .. "/lazy"
+            local lazydev_paths = {
+                { path = "luvit-meta/library", words = { "vim%.uv" } },
+            }
+            for path in vim.fs.dir(plugins_path) do
+                for inner_path in vim.fs.dir(plugins_path .. "/" .. path) do
+                    if inner_path == "lua" then
+                        table.insert(lazydev_paths, path .. "/lua")
+                    end
+                end
+            end
+            require("lazydev").setup({ library = lazydev_paths })
+        end,
+    },
     -- Allows extra capabilities provided by blink.cmp
     {
         "saghen/blink.cmp",
         -- optional: provides snippets for the snippet source
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            {
-                "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
-                dependencies = { { "Bilal2453/luvit-meta", lazy = true } },
-                opts = {
-                    library = {
-                        -- See the configuration section for more details
-                        -- Load luvit types when the `vim.uv` word is found
-                        { path = "luvit-meta/library", words = { "vim%.uv" } },
-                        plugins_path .. "/lazy/",
-                    },
-                },
-            },
-        },
 
         -- use a release tag to download pre-built binaries
         version = "1.*",
