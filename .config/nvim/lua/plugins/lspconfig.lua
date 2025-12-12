@@ -9,6 +9,7 @@ return {
                 "vue_ls",
                 "html",
                 "jsonls",
+                "lemminx",
             },
         },
         dependencies = {
