@@ -15,7 +15,7 @@ vim.opt.tabstop = 4
 
 -- Netrw Configuration
 -- vim.g.netrw_banner = 1
-vim.g.netrw_liststyle = 3
+-- vim.g.netrw_liststyle = 3
 -- vim.g.netrw_winsize = 30
 -- vim.g.netrw_browse_split = 4
 -- vim.g.netrw_altv = 0
