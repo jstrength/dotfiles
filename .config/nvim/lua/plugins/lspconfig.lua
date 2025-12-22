@@ -10,6 +10,8 @@ return {
                 "html",
                 "jsonls",
                 "lemminx",
+                "basedpyright",
+                "clangd",
             },
         },
         dependencies = {
