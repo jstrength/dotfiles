@@ -12,6 +12,7 @@ return {
                 "lemminx",
                 "basedpyright",
                 "clangd",
+                "cssls",
             },
         },
         dependencies = {
@@ -131,6 +132,7 @@ return {
                 javascript = { "prettierd", "prettier", stop_after_first = true },
                 typescript = { "prettierd", "prettier", stop_after_first = true },
                 vue = { "prettierd", "prettier", stop_after_first = true },
+                ["ce.vue"] = { "prettierd", "prettier", stop_after_first = true },
             },
             format_on_save = function(bufnr)
                 -- Disable with a global or buffer-local variable

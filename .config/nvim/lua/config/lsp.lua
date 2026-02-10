@@ -57,6 +57,8 @@ vim.lsp.enable("asm")
 -- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
+        local fzf = require("fzf-lua")
+
         local bufnr = ev.buf
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         if not client then
@@ -90,10 +92,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local function opt(desc, others)
             return vim.tbl_extend("force", opts, { desc = desc }, others or {})
         end
-        keymap("n", "gd", lsp.buf.definition, opt("Go to definition"))
-        keymap("n", "gi", function() lsp.buf.implementation({ border = "single" }) end, opt("Go to implementation"))
-        keymap("n", "gr", lsp.buf.references, opt("Show References"))
-        keymap("n", "gl", vim.diagnostic.open_float, opt("Open diagnostic in float"))
         keymap("n", "<C-k>", lsp.buf.signature_help, opts)
         -- disable the default binding first before using a custom one
         pcall(vim.keymap.del, "n", "K", { buffer = ev.buf })
@@ -101,14 +99,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
             opt("Toggle hover"))
         keymap("n", "<Leader>lF", vim.cmd.FormatToggle, opt("Toggle AutoFormat"))
         keymap("n", "<Leader>lI", vim.cmd.Mason, opt("Mason"))
-        keymap("n", "<Leader>lS", lsp.buf.workspace_symbol, opt("Workspace Symbols"))
-        keymap("n", "<Leader>la", lsp.buf.code_action, opt("Code Action"))
         keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end,
             opt("Toggle Inlayhints"))
         keymap("n", "<Leader>li", vim.cmd.LspInfo, opt("LspInfo"))
         keymap("n", "<Leader>ll", lsp.codelens.run, opt("Run CodeLens"))
         keymap("n", "<Leader>lr", lsp.buf.rename, opt("Rename"))
-        keymap("n", "<Leader>ls", lsp.buf.document_symbol, opt("Document Symbols"))
+
+        keymap("n", "<Leader>la", fzf.lsp_code_actions, opt("Code Action"))
+        keymap("n", "gl", fzf.lsp_document_symbols, opt("Open diagnostic"))
+        keymap("n", "gi", fzf.lsp_implementations, opt("Go to implementation"))
+        keymap("n", "gd", fzf.lsp_definitions, opt("Go to definition"))
+        keymap("n", "gr", fzf.lsp_references, opt("Show References"))
+        keymap("n", "<Leader>lS", fzf.lsp_workspace_symbols, opt("Workspace Symbols"))
+        keymap("n", "<Leader>ls", fzf.lsp_document_symbols, opt("Document Symbols"))
+        keymap({'n', 'i', 'v'}, "<C-f>", fzf.complete_path, opt("Complte Path"))
 
         -- diagnostic mappings
         keymap("n", "<Leader>dn", function() vim.diagnostic.jump({ count = 1, float = true }) end, opt("Next Diagnostic"))
