@@ -6,7 +6,7 @@ return {
         build = ":TSUpdate",
         config = function()
             local ensure_installed =
-                { "go", "vue", "typescript", "javascript", "css", "scss", "html", "json", "python", "sql", "xml" }
+            { "go", "vue", "typescript", "rust", "javascript", "css", "scss", "html", "json", "python", "sql", "xml" }
             require("nvim-treesitter").install(ensure_installed)
             vim.api.nvim_create_autocmd("FileType", {
                 callback = function(args)
